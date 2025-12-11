@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonsai …</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, #f0fff4 0%, #ffffff 100%);
+      color: #333;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    img.logo {
+      max-width: 240px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 10px 0;
+      color: #2f6d2f;
+      letter-spacing: 1px;
+    }
+
+    p.tagline {
+      font-size: 1.3em;
+      font-style: italic;
+      color: #555;
+      opacity: 0;
+      animation: fadeIn 3s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    footer {
+      padding: 20px;
+      font-size: 0.9em;
+      color: #777;
+      background: #f9f9f9;
+    }
+
+    a {
+      color: #2f6d2f;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+      p.tagline {
+        font-size: 1.1em;
+      }
+      img.logo {
+        max-width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Bonsai Logo" class="logo">
+    <h1></h1>
+    <p class="tagline">Pause. Reflect. Continue…</p>
+  </header>
+
+  <footer>
+    <p>Contact: <a href="mailto:bonsai@bonsaidotdot.com">bonsai@bonsaidotdot.com</a></p>
+  </footer>
+</body>
+</html>
