@@ -133,11 +133,14 @@
   <footer>
     <p>Contact: <a href="mailto:bonsai@bonsaidotdot.com">bonsai@bonsaidotdot.com</a></p>
   </footer>
-  <!-- Ko-fi Floating Widget -->
-  <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+  <div id="footer"></div>
   <script>
-    kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'bonsaidotdotdot');
-    kofiwidget2.draw();
+    fetch('/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer').innerHTML = data;
+      });
   </script>
 </body>
+
 </html>

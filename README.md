@@ -2,13 +2,6 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-brightgreen)](https://bonsaidotdot.com)
 
-<!-- Ko-fi Button -->
-<a href="https://ko-fi.com/bonsaidotdotdot" target="_blank">
-  <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" 
-       alt="Support me on Ko-fi" 
-       style="border:0;height:36px;">
-</a>
-
 Welcome to the Bonsai … static site repository.  
 This repo powers [bonsaidotdot.com](https://bonsaidotdot.com) via GitHub Pages.
 
@@ -35,6 +28,7 @@ This repo powers [bonsaidotdot.com](https://bonsaidotdot.com) via GitHub Pages.
 ├── favicon.png        # optional high-res favicon for mobile/modern browsers
 ├── logo.png
 ├── .nojekyll          # disables Jekyll processing on GitHub Pages
+├── footer.html        # shared footer with motto + Ko-fi widget
 ├── /legal/
 │   ├── support.html
 │   ├── privacy.html
@@ -60,3 +54,15 @@ To update or add pages:
 5. Open a Pull Request for review.
 
 Please keep navigation links, branding, and the pulsing motto consistent across all pages.
+
+## ☕ Ko-fi Integration
+
+A shared `footer.html` file includes the pulsing motto (*Pause. Reflect. Continue…*) and the Ko-fi floating widget.  
+Each page loads it dynamically with a small JavaScript snippet, ensuring consistent branding and support options site-wide.
+
+<!-- Ko-fi Button -->
+<a href="https://ko-fi.com/bonsaidotdotdot" target="_blank">
+  <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" 
+       alt="Support me on Ko-fi" 
+       style="border:0;height:36px;">
+</a>
