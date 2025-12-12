@@ -6,16 +6,31 @@
   <title>Bonsai …</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
-    /* Base styles */
     body {
       margin: 0;
       font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
       background: linear-gradient(180deg, #f0fff4 0%, #ffffff 100%);
       color: #333;
-      text-align: center;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+    }
+
+    /* Navigation bar */
+    nav {
+      background: #2c3e50;
+      padding: 0.8em;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #a8e6a2;
     }
 
     header {
@@ -44,13 +59,14 @@
       font-size: 1.3em;
       font-style: italic;
       color: #555;
-      opacity: 0;
-      animation: fadeIn 3s ease forwards;
+      margin: 3em 0 1em;
+      animation: throb 5s infinite;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes throb {
+      0%   { opacity: 1; transform: scale(1); }
+      50%  { opacity: 0.6; transform: scale(1.3); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     footer {
@@ -58,35 +74,38 @@
       font-size: 0.9em;
       color: #777;
       background: #f9f9f9;
+      text-align: center;
     }
 
     a {
       color: #2f6d2f;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
 
-    /* Responsive tweaks */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 2em;
-      }
-      p.tagline {
-        font-size: 1.1em;
-      }
-      img.logo {
-        max-width: 180px;
-      }
+      h1 { font-size: 2em; }
+      p.tagline { font-size: 1.1em; }
+      img.logo { max-width: 180px; }
+      nav a { margin: 0 0.5em; font-size: 0.9em; }
     }
   </style>
 </head>
 <body>
+  <!-- Navigation bar -->
+  <nav>
+    <a href="/">Home</a>
+    <a href="/legal/support.html">Support</a>
+    <a href="/legal/privacy.html">Privacy</a>
+    <a href="/legal/terms.html">Terms</a>
+    <a href="/apps/wordpath/about.html">WordPath</a>
+  </nav>
+
   <header>
     <img src="logo.png" alt="Bonsai Logo" class="logo">
-    <h1></h1>
+    <h1>Bonsai …</h1>
     <p class="tagline">Pause. Reflect. Continue…</p>
   </header>
 
