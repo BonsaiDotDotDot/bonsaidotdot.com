@@ -2,6 +2,13 @@
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-deployed-brightgreen)](https://bonsaidotdot.com)
 
+<!-- Ko-fi Button -->
+<a href="https://ko-fi.com/bonsaidotdotdot" target="_blank">
+  <img src="https://storage.ko-fi.com/cdn/kofi2.png?v=3" 
+       alt="Support me on Ko-fi" 
+       style="border:0;height:36px;">
+</a>
+
 Welcome to the Bonsai … static site repository.  
 This repo powers [bonsaidotdot.com](https://bonsaidotdot.com) via GitHub Pages.
 
