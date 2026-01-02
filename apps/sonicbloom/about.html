@@ -22,13 +22,15 @@
 </head>
 <body>
 
-  <nav>
-    <a href="/">Home</a>
-    <a href="/legal/support.html">Support</a>
-    <a href="/legal/privacy.html">Privacy</a>
-    <a href="/legal/terms.html">Terms</a>
-    <a href="/apps/sonicbloom/about.html">SonicBloom</a>
-  </nav>
+<div id="nav-placeholder"></div>
+<script>
+  fetch("/components/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+    });
+</script>
+
 
   <header>
     <h1> <img src="SonicBloom_Logo.png" alt="SonicBloom logo" style="max-width:40%; height:auto;"></h1>
