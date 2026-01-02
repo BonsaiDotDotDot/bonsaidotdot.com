@@ -16,9 +16,14 @@
   </style>
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a><a href="/legal/support.html">Support</a><a href="/legal/privacy.html">Privacy</a><a href="/legal/terms.html">Terms</a><a href="/apps/wordpath/about.html">WordPath</a>
-  </nav>
+  <div id="nav-placeholder"></div>
+  <script>
+    fetch("/components/nav.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("nav-placeholder").innerHTML = data;
+      });
+  </script>
   <header><h1>Bonsai … Support</h1></header>
   <main>
     <p>For assistance with any Bonsai … apps, including <strong>WordPath</strong> and <strong>SonicBloom</strong>, contact us at:</p>
