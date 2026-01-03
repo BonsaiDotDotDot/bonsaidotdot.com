@@ -28,6 +28,17 @@
       cursor: pointer;
     }
 
+    /* Add invisible hover bridge for desktop */
+    .bonsai-nav .has-submenu::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 0.5rem;
+      display: block;
+    }
+
     /* LINKS + LABELS */
     .bonsai-nav .menu-list a,
     .bonsai-nav .submenu-label {
@@ -61,7 +72,7 @@
       position: absolute !important;
       top: 100%;
       left: 0;
-      margin-top: 0.5rem;
+      margin-top: 0.5rem; /* Gap for visual separation */
       background-color: #0a0a23;
       border: 1px solid #333;
       border-radius: 6px;
@@ -146,7 +157,7 @@
 
 <script>
   // Self-contained click handler for mobile submenu toggling
-  document.addEventListener('DOMContentLoaded', function() {
+  (function() {
     const nav = document.querySelector('.bonsai-nav');
     if (!nav) return;
 
@@ -176,5 +187,5 @@
         });
       }
     });
-  });
+  })();
 </script>
