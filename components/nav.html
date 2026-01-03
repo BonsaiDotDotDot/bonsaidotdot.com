@@ -19,12 +19,13 @@
     }
 
     .bonsai-nav .menu-list li {
-      position: relative; /* anchor for absolute submenu */
+      position: relative;
       flex-shrink: 0;
-      cursor: pointer; /* helps mobile tap */
+      cursor: pointer;
     }
 
-    .bonsai-nav .menu-list a {
+    .bonsai-nav .menu-list a,
+    .bonsai-nav .menu-list span.submenu-label {
       color: white;
       text-decoration: none;
       padding: 0.25rem 0;
@@ -105,7 +106,7 @@
 
     <!-- APPS -->
     <li class="has-submenu">
-      <a href="#">2Apps</a>
+      <span class="submenu-label">Apps</span>
       <ul class="submenu">
         <li>
           <a href="/apps/wordpath/about.html">
@@ -124,7 +125,7 @@
 
     <!-- LEGAL -->
     <li class="has-submenu">
-      <a href="#">Legal</a>
+      <span class="submenu-label">Legal</span>
       <ul class="submenu">
         <li><a href="/legal/support.html">Support</a></li>
         <li><a href="/legal/privacy.html">Privacy</a></li>
@@ -133,18 +134,4 @@
     </li>
 
   </ul>
-
-  <!-- MOBILE-SAFE CLICK HANDLER -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".bonsai-nav .has-submenu")
-        .forEach(li => {
-          li.addEventListener("click", e => {
-            e.stopPropagation()
-            li.classList.toggle("open")
-          })
-        })
-    })
-  </script>
-
 </nav>
