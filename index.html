@@ -117,14 +117,29 @@
 </head>
 <body>
   <!-- Navigation bar -->
-  <div id="nav-placeholder"></div>
-  <script>
-    fetch("/components/nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav-placeholder").innerHTML = data;
-      });
-  </script>
+<div id="nav-placeholder"></div>
+
+<script>
+fetch("/components/nav.html")
+  .then(r => r.text())
+  .then(html => {
+    document.getElementById("nav-placeholder").innerHTML = html
+  })
+</script>
+
+<!-- PLACE YOUR CLICK HANDLER *HERE* -->
+<script>
+document.addEventListener("click", e => {
+  const li = e.target.closest(".bonsai-nav .has-submenu")
+  if (!li) return
+
+  e.preventDefault()
+  e.stopPropagation()
+
+  li.classList.toggle("open")
+})
+</script>
+
 
   <header>
     <img src="logo.png" alt="Bonsai Logo" class="logo" style="max-width:40%; height:auto;">
