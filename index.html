@@ -118,13 +118,34 @@
 <body>
   <!-- Navigation bar -->
   <div id="nav-placeholder"></div>
+
   <script>
     fetch("/components/nav.html")
       .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav-placeholder").innerHTML = data;
+      .then(html => {
+        const container = document.getElementById("nav-placeholder");
+        container.innerHTML = html;
+
+        const nav = container.querySelector(".bonsai-nav");
+        const toggle = nav.querySelector(".menu-toggle");
+        const menu = nav.querySelector(".menu-list");
+
+        toggle.addEventListener("click", () => {
+          const isOpen = getComputedStyle(menu).display === "flex";
+          menu.style.display = isOpen ? "none" : "flex";
+        });
+
+        nav.querySelectorAll(".has-submenu > a").forEach(link => {
+          link.addEventListener("click", e => {
+            if (window.innerWidth < 700) {
+              e.preventDefault();
+              link.parentElement.classList.toggle("open");
+            }
+          });
+        });
       });
   </script>
+
 
   <header>
     <img src="logo.png" alt="Bonsai Logo" class="logo">
