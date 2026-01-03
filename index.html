@@ -78,7 +78,18 @@
             });
 
             // Toggle current submenu
+            const isOpening = !li.classList.contains('open');
             li.classList.toggle('open');
+
+            // Position submenu on mobile (fixed positioning)
+            if (isOpening && window.innerWidth <= 700) {
+              const submenu = li.querySelector('.submenu');
+              if (submenu) {
+                const rect = li.getBoundingClientRect();
+                submenu.style.top = rect.bottom + 'px';
+                submenu.style.left = rect.left + 'px';
+              }
+            }
           });
 
           // Close submenus when clicking outside

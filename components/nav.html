@@ -106,6 +106,12 @@
         overflow-x: auto;
         overflow-y: visible; /* Allow submenu to appear outside */
       }
+
+      /* Fixed positioning for mobile to escape overflow clipping */
+      .bonsai-nav .submenu {
+        position: fixed !important;
+        /* Position will be set by JavaScript */
+      }
     }
 
     /* CLICK-TOGGLED SUBMENU (for mobile/touch) */
