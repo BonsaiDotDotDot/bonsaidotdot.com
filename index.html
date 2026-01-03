@@ -17,20 +17,6 @@
       min-height: 100vh;
     }
 
-    /* HOMEPAGE NAV ONLY — DOES NOT TOUCH .bonsai-nav */
-    body > nav {
-      background: #2c3e50;
-      padding: 0.8em;
-      text-align: center;
-    }
-
-    body > nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1em;
-      font-weight: 500;
-    }
-
     header {
       flex: 1;
       display: flex;
@@ -80,7 +66,7 @@
   <script>
     document.getElementById("nav-placeholder").addEventListener("click", e => {
 
-      // Allow submenu links to navigate
+      // Allow submenu links to navigate normally
       if (e.target.closest(".submenu")) return
 
       const li = e.target.closest(".has-submenu")
