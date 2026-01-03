@@ -19,7 +19,7 @@
     }
 
     .bonsai-nav .menu-list li {
-      position: relative; /* REQUIRED for absolute submenu */
+      position: relative; /* anchor for absolute submenu */
       flex-shrink: 0;
     }
 
@@ -49,19 +49,20 @@
       flex-shrink: 0;
     }
 
-    /* FLOATING POPUP SUBMENU */
+    /* FORCED FLOATING POPUP */
     .bonsai-nav .submenu {
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
+      position: absolute !important;   /* FORCE floating */
+      top: 100% !important;            /* FORCE below parent */
+      left: 0 !important;
       background-color: #0a0a23;
       border: 1px solid #333;
       border-radius: 6px;
       min-width: 180px;
-      z-index: 1000;
+      z-index: 9999;
       list-style: none;
       padding: 0;
+      flex: none !important;           /* prevent flex inheritance */
     }
 
     .bonsai-nav .submenu li a {
@@ -80,7 +81,7 @@
       }
     }
 
-    /* MOBILE: layout only, no behavior changes */
+    /* MOBILE: layout only, no behavior override */
     @media (max-width: 700px) {
       .bonsai-nav .menu-list {
         overflow-x: auto;
@@ -89,7 +90,7 @@
 
     /* UNIVERSAL: click/tap opens popup */
     .bonsai-nav .has-submenu.open .submenu {
-      display: block;
+      display: block !important; /* FORCE visibility */
     }
   </style>
 
