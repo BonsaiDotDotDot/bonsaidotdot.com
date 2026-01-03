@@ -62,21 +62,6 @@
       })
   </script>
 
-  <!-- CLICK HANDLER (isolated + correct) -->
-  <script>
-    document.getElementById("nav-placeholder").addEventListener("click", e => {
-
-      // Allow submenu links to navigate normally
-      if (e.target.closest(".submenu")) return
-
-      const li = e.target.closest(".has-submenu")
-      if (!li) return
-
-      e.preventDefault()
-      li.classList.toggle("open")
-    })
-  </script>
-
   <header>
     <img src="logo.png" class="logo">
     <p class="tagline">Pause. Reflect. Continue…</p>

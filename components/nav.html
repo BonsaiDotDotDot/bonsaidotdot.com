@@ -18,6 +18,7 @@
       list-style: none;
       align-items: center;
       white-space: nowrap;
+      overflow: visible; /* Allow submenu to overflow */
     }
 
     /* EACH TOP-LEVEL ITEM */
@@ -60,6 +61,7 @@
       position: absolute !important;
       top: 100%;
       left: 0;
+      margin-top: 0.5rem;
       background-color: #0a0a23;
       border: 1px solid #333;
       border-radius: 6px;
@@ -68,6 +70,7 @@
       list-style: none;
       padding: 0;
       flex: none !important; /* prevents flex inheritance */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     .bonsai-nav .submenu li a {
@@ -79,21 +82,22 @@
       white-space: nowrap;
     }
 
-    /* DESKTOP HOVER */
-    @media (min-width: 701px) {
-      .bonsai-nav .menu-list > li:hover .submenu {
+    /* HOVER FOR DESKTOP */
+    @media (hover: hover) {
+      .bonsai-nav .has-submenu:hover .submenu {
         display: block;
       }
     }
 
-    /* MOBILE SCROLL */
+    /* MOBILE HORIZONTAL SCROLL */
     @media (max-width: 700px) {
       .bonsai-nav .menu-list {
         overflow-x: auto;
+        overflow-y: visible; /* Allow submenu to appear outside */
       }
     }
 
-    /* JS-TOGGLED SUBMENU */
+    /* CLICK-TOGGLED SUBMENU (for mobile/touch) */
     .bonsai-nav .has-submenu.open .submenu {
       display: block !important;
     }
@@ -139,3 +143,38 @@
 
   </ul>
 </nav>
+
+<script>
+  // Self-contained click handler for mobile submenu toggling
+  document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.querySelector('.bonsai-nav');
+    if (!nav) return;
+
+    nav.addEventListener('click', function(e) {
+      // Allow submenu links to navigate normally
+      if (e.target.closest('.submenu')) return;
+
+      const li = e.target.closest('.has-submenu');
+      if (!li) return;
+
+      e.preventDefault();
+
+      // Close other open submenus
+      nav.querySelectorAll('.has-submenu.open').forEach(item => {
+        if (item !== li) item.classList.remove('open');
+      });
+
+      // Toggle current submenu
+      li.classList.toggle('open');
+    });
+
+    // Close submenus when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.bonsai-nav')) {
+        nav.querySelectorAll('.has-submenu.open').forEach(item => {
+          item.classList.remove('open');
+        });
+      }
+    });
+  });
+</script>
