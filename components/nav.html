@@ -31,12 +31,14 @@
       font-size: 0.95rem;
     }
 
+    /* Logo */
     .bonsai-nav .logo img {
       height: 32px;
       width: auto;
       display: block;
     }
 
+    /* App icons */
     .bonsai-nav .app-icon {
       width: 18px;
       height: 18px;
@@ -45,6 +47,7 @@
       flex-shrink: 0;
     }
 
+    /* Submenu: floating popup */
     .bonsai-nav .submenu {
       display: none;
       position: absolute;
@@ -68,31 +71,23 @@
       gap: 6px;
     }
 
-    /* Hover opens submenu on desktop */
+    /* Desktop: hover opens submenu */
     @media (min-width: 701px) {
       .bonsai-nav .menu-list li:hover .submenu {
         display: block;
       }
     }
 
-    /* Tap-to-open on mobile */
+    /* Mobile layout tweaks only */
     @media (max-width: 700px) {
       .bonsai-nav .menu-list {
         flex-wrap: nowrap;
         overflow-x: auto;
         white-space: nowrap;
       }
-
-      .bonsai-nav .has-submenu.open .submenu {
-        display: block;
-      }
-
-      .bonsai-nav .menu-list li:hover .submenu {
-        display: none;
-      }
     }
 
-    /* Always allow .open class to show submenu */
+    /* Click/tap: .open always shows submenu (desktop + mobile) */
     .bonsai-nav .has-submenu.open .submenu {
       display: block;
     }
