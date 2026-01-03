@@ -9,28 +9,26 @@
     .bonsai-nav .menu-list {
       display: flex;
       gap: 1.5rem;
-      padding: 0;
+      padding: 0.4rem 1rem;
       margin: 0;
       list-style: none;
-      align-items: stretch;
+      align-items: center;
+      position: relative;
     }
 
     .bonsai-nav .menu-list li {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-shrink: 0;
     }
 
     .bonsai-nav .menu-list a {
       color: white;
       text-decoration: none;
-      padding: 0.6rem 1rem;
+      padding: 0.25rem 0;
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 0.95rem;
-      height: 100%;
     }
 
     .bonsai-nav .logo img {
@@ -49,9 +47,17 @@
 
     .bonsai-nav .submenu {
       display: none;
-      flex-direction: column;
-      background-color: #1a1a3a;
-      border-top: 1px solid #333;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #0a0a23;
+      border: 1px solid #333;
+      border-radius: 6px;
+      min-width: 180px;
+      z-index: 1000;
+      list-style: none;
+      padding: 0;
+      text-align: left;
     }
 
     .bonsai-nav .submenu li a {
@@ -62,37 +68,49 @@
       gap: 6px;
     }
 
-    .bonsai-nav .menu-list li:hover .submenu {
-      display: flex;
+    /* Hover opens submenu on desktop */
+    @media (min-width: 701px) {
+      .bonsai-nav .menu-list li:hover .submenu {
+        display: block;
+      }
     }
 
+    /* Tap-to-open on mobile */
     @media (max-width: 700px) {
       .bonsai-nav .menu-list {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
       }
 
-      .bonsai-nav .menu-list li {
-        width: auto;
+      .bonsai-nav .has-submenu.open .submenu {
+        display: block;
       }
 
-      .bonsai-nav .submenu {
-        position: static;
-        border: none;
+      .bonsai-nav .menu-list li:hover .submenu {
+        display: none;
       }
+    }
+
+    /* Always allow .open class to show submenu */
+    .bonsai-nav .has-submenu.open .submenu {
+      display: block;
     }
   </style>
 
   <ul class="menu-list">
-    <!-- Logo fills bar height -->
+    <!-- Logo -->
     <li class="logo">
       <a href="/">
         <img src="/logo.png" alt="Bonsai logo">
       </a>
     </li>
 
-    <!-- Legal submenu -->
+    <!-- Legal -->
     <li class="has-submenu">
-      <a href="#">Legal</a>
+      <a href="#" onclick="this.parentElement.classList.toggle('open'); return false;">
+        Legal
+      </a>
       <ul class="submenu">
         <li><a href="/legal/support.html">Support</a></li>
         <li><a href="/legal/privacy.html">Privacy</a></li>
@@ -100,9 +118,11 @@
       </ul>
     </li>
 
-    <!-- Apps submenu -->
+    <!-- Apps -->
     <li class="has-submenu">
-      <a href="#">Apps</a>
+      <a href="#" onclick="this.parentElement.classList.toggle('open'); return false;">
+        Apps
+      </a>
       <ul class="submenu">
         <li>
           <a href="/apps/wordpath/about.html">
