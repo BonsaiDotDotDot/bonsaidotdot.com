@@ -6,6 +6,7 @@
       font-family: sans-serif;
     }
 
+    /* MAIN MENU */
     .bonsai-nav .menu-list {
       display: flex;
       flex-wrap: nowrap;
@@ -16,7 +17,6 @@
       margin: 0;
       list-style: none;
       align-items: center;
-      justify-content: flex-start;
     }
 
     .bonsai-nav .menu-list li {
@@ -34,6 +34,7 @@
       font-size: 0.95rem;
     }
 
+    /* ICONS */
     .bonsai-nav .app-icon {
       width: 18px;
       height: 18px;
@@ -42,6 +43,7 @@
       flex-shrink: 0;
     }
 
+    /* SUBMENU (DESKTOP MODE) */
     .bonsai-nav .submenu {
       display: none;
       position: absolute;
@@ -65,22 +67,37 @@
       gap: 6px;
     }
 
-    .bonsai-nav .menu-list li:hover .submenu {
-      display: block;
-    }
-
-    .bonsai-nav .submenu li a:hover {
-      background-color: #1a1a3a;
-    }
-
-    @media (max-width: 700px) {
-      .bonsai-nav .menu-list {
-        justify-content: center;
-      }
-
+    /* DESKTOP: hover opens submenu */
+    @media (min-width: 701px) {
       .bonsai-nav .menu-list li:hover .submenu {
         display: block;
-        position: absolute;
+      }
+    }
+
+    /* MOBILE MODE */
+    @media (max-width: 700px) {
+
+      /* Keep menu horizontal */
+      .bonsai-nav .menu-list {
+        justify-content: flex-start;
+      }
+
+      /* Submenu becomes inline-flow under parent */
+      .bonsai-nav .submenu {
+        position: static;
+        border: none;
+        background: #0a0a23;
+        padding-left: 1rem;
+      }
+
+      /* Hover disabled on mobile */
+      .bonsai-nav .menu-list li:hover .submenu {
+        display: none;
+      }
+
+      /* Tap-to-open behavior */
+      .bonsai-nav .has-submenu.open .submenu {
+        display: block;
       }
     }
   </style>
@@ -89,7 +106,9 @@
     <li><a href="/">Home</a></li>
 
     <li class="has-submenu">
-      <a href="#">Legal</a>
+      <a href="#" onclick="this.parentElement.classList.toggle('open'); return false;">
+        Legal
+      </a>
       <ul class="submenu">
         <li><a href="/legal/support.html">Support</a></li>
         <li><a href="/legal/privacy.html">Privacy</a></li>
@@ -98,7 +117,9 @@
     </li>
 
     <li class="has-submenu">
-      <a href="#">Apps</a>
+      <a href="#" onclick="this.parentElement.classList.toggle('open'); return false;">
+        Apps
+      </a>
       <ul class="submenu">
         <li>
           <a href="/apps/wordpath/about.html">
