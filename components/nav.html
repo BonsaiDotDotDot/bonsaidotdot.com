@@ -6,6 +6,7 @@
       font-family: sans-serif;
     }
 
+    /* MAIN BAR */
     .bonsai-nav .menu-list {
       display: flex;
       gap: 1.5rem;
@@ -18,7 +19,7 @@
     }
 
     .bonsai-nav .menu-list li {
-      position: relative;
+      position: relative; /* anchor for absolute submenu */
       flex-shrink: 0;
     }
 
@@ -32,12 +33,14 @@
       font-size: 0.95rem;
     }
 
+    /* LOGO */
     .bonsai-nav .logo img {
       height: 36px;
       width: auto;
       display: block;
     }
 
+    /* APP ICONS */
     .bonsai-nav .app-icon {
       width: 18px;
       height: 18px;
@@ -77,14 +80,10 @@
       }
     }
 
-    /* MOBILE: tap opens submenu */
+    /* MOBILE: layout only */
     @media (max-width: 700px) {
       .bonsai-nav .menu-list {
         overflow-x: auto;
-      }
-
-      .bonsai-nav .has-submenu.open .submenu {
-        display: block;
       }
     }
 
@@ -95,6 +94,7 @@
   </style>
 
   <ul class="menu-list">
+
     <!-- LOGO -->
     <li class="logo">
       <a href="/">
@@ -103,7 +103,7 @@
     </li>
 
     <!-- APPS -->
-    <li class="has-submenu" onclick="this.classList.toggle('open')">
+    <li class="has-submenu">
       <a href="#">Apps</a>
       <ul class="submenu">
         <li>
@@ -122,7 +122,7 @@
     </li>
 
     <!-- LEGAL -->
-    <li class="has-submenu" onclick="this.classList.toggle('open')">
+    <li class="has-submenu">
       <a href="#">Legal</a>
       <ul class="submenu">
         <li><a href="/legal/support.html">Support</a></li>
@@ -130,5 +130,20 @@
         <li><a href="/legal/terms.html">Terms</a></li>
       </ul>
     </li>
+
   </ul>
+
+  <!-- MOBILE-SAFE CLICK HANDLER -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".bonsai-nav .has-submenu > a")
+        .forEach(a => {
+          a.addEventListener("click", e => {
+            e.preventDefault()
+            a.parentElement.classList.toggle("open")
+          })
+        })
+    })
+  </script>
+
 </nav>
