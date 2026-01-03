@@ -43,7 +43,7 @@
       flex-shrink: 0;
     }
 
-    /* SUBMENU (DESKTOP MODE) */
+    /* SUBMENU (FLOATING PANEL) */
     .bonsai-nav .submenu {
       display: none;
       position: absolute;
@@ -74,28 +74,25 @@
       }
     }
 
-    /* MOBILE MODE */
+    /* MOBILE: submenu still floats, but opens on tap */
     @media (max-width: 700px) {
-
-      /* Keep menu horizontal */
       .bonsai-nav .menu-list {
         justify-content: flex-start;
       }
 
-      /* Submenu becomes inline-flow under parent */
+      /* Keep submenu floating */
       .bonsai-nav .submenu {
-        position: static;
-        border: none;
+        position: absolute;
+        border: 1px solid #333;
         background: #0a0a23;
-        padding-left: 1rem;
       }
 
-      /* Hover disabled on mobile */
+      /* Disable hover on mobile */
       .bonsai-nav .menu-list li:hover .submenu {
         display: none;
       }
 
-      /* Tap-to-open behavior */
+      /* Tap-to-open */
       .bonsai-nav .has-submenu.open .submenu {
         display: block;
       }
