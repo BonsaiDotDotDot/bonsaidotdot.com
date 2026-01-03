@@ -1,31 +1,35 @@
 <nav class="bonsai-nav">
   <style>
+    /* ROOT NAV WRAPPER — fully isolated */
     .bonsai-nav {
       background-color: #0a0a23;
       color: white;
       font-family: sans-serif;
-      position: relative; /* REQUIRED for floating submenu */
-      z-index: 1000; /* ensures it floats above homepage nav */
+      position: relative;
+      z-index: 1000;
     }
 
+    /* MAIN BAR */
     .bonsai-nav .menu-list {
       display: flex;
       gap: 1.5rem;
-      padding: 0.4rem 1rem;
+      padding: 0.6rem 1rem;
       margin: 0;
       list-style: none;
       align-items: center;
       white-space: nowrap;
     }
 
-    .bonsai-nav .menu-list li {
-      position: relative;
+    /* EACH TOP-LEVEL ITEM */
+    .bonsai-nav .menu-list > li {
+      position: relative !important; /* REQUIRED for floating submenu */
       flex-shrink: 0;
       cursor: pointer;
     }
 
+    /* LINKS + LABELS */
     .bonsai-nav .menu-list a,
-    .bonsai-nav .menu-list span.submenu-label {
+    .bonsai-nav .submenu-label {
       color: white;
       text-decoration: none;
       padding: 0.25rem 0;
@@ -35,12 +39,14 @@
       font-size: 0.95rem;
     }
 
+    /* LOGO */
     .bonsai-nav .logo img {
       height: 36px;
       width: auto;
       display: block;
     }
 
+    /* APP ICONS */
     .bonsai-nav .app-icon {
       width: 18px;
       height: 18px;
@@ -48,9 +54,10 @@
       object-fit: cover;
     }
 
+    /* FLOATING SUBMENU */
     .bonsai-nav .submenu {
       display: none;
-      position: absolute;
+      position: absolute !important;
       top: 100%;
       left: 0;
       background-color: #0a0a23;
@@ -60,6 +67,7 @@
       z-index: 9999;
       list-style: none;
       padding: 0;
+      flex: none !important; /* prevents flex inheritance */
     }
 
     .bonsai-nav .submenu li a {
@@ -71,28 +79,36 @@
       white-space: nowrap;
     }
 
+    /* DESKTOP HOVER */
     @media (min-width: 701px) {
-      .bonsai-nav .menu-list li:hover .submenu {
+      .bonsai-nav .menu-list > li:hover .submenu {
         display: block;
       }
     }
 
+    /* MOBILE SCROLL */
     @media (max-width: 700px) {
       .bonsai-nav .menu-list {
         overflow-x: auto;
       }
     }
 
+    /* JS-TOGGLED SUBMENU */
     .bonsai-nav .has-submenu.open .submenu {
-      display: block;
+      display: block !important;
     }
   </style>
 
   <ul class="menu-list">
+
+    <!-- LOGO -->
     <li class="logo">
-      <a href="/"><img src="/logo.png" alt="Bonsai logo"></a>
+      <a href="/">
+        <img src="/logo.png" alt="Bonsai logo">
+      </a>
     </li>
 
+    <!-- APPS -->
     <li class="has-submenu">
       <span class="submenu-label">Apps</span>
       <ul class="submenu">
@@ -111,6 +127,7 @@
       </ul>
     </li>
 
+    <!-- LEGAL -->
     <li class="has-submenu">
       <span class="submenu-label">Legal</span>
       <ul class="submenu">
@@ -119,5 +136,6 @@
         <li><a href="/legal/terms.html">Terms</a></li>
       </ul>
     </li>
+
   </ul>
 </nav>
