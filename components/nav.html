@@ -4,9 +4,10 @@
       background-color: #0a0a23;
       color: white;
       font-family: sans-serif;
+      position: relative; /* REQUIRED for floating submenu */
+      z-index: 1000; /* ensures it floats above homepage nav */
     }
 
-    /* MAIN BAR */
     .bonsai-nav .menu-list {
       display: flex;
       gap: 1.5rem;
@@ -14,7 +15,6 @@
       margin: 0;
       list-style: none;
       align-items: center;
-      position: relative;
       white-space: nowrap;
     }
 
@@ -35,23 +35,19 @@
       font-size: 0.95rem;
     }
 
-    /* LOGO */
     .bonsai-nav .logo img {
       height: 36px;
       width: auto;
       display: block;
     }
 
-    /* APP ICONS */
     .bonsai-nav .app-icon {
       width: 18px;
       height: 18px;
       border-radius: 4px;
       object-fit: cover;
-      flex-shrink: 0;
     }
 
-    /* FLOATING SUBMENU */
     .bonsai-nav .submenu {
       display: none;
       position: absolute;
@@ -75,55 +71,46 @@
       white-space: nowrap;
     }
 
-    /* DESKTOP: hover opens submenu */
     @media (min-width: 701px) {
       .bonsai-nav .menu-list li:hover .submenu {
         display: block;
       }
     }
 
-    /* MOBILE: layout only */
     @media (max-width: 700px) {
       .bonsai-nav .menu-list {
         overflow-x: auto;
       }
     }
 
-    /* UNIVERSAL: .open always shows submenu */
     .bonsai-nav .has-submenu.open .submenu {
       display: block;
     }
   </style>
 
   <ul class="menu-list">
-
-    <!-- LOGO -->
     <li class="logo">
-      <a href="/">
-        <img src="/logo.png" alt="Bonsai logo">
-      </a>
+      <a href="/"><img src="/logo.png" alt="Bonsai logo"></a>
     </li>
 
-    <!-- APPS -->
     <li class="has-submenu">
       <span class="submenu-label">Apps</span>
       <ul class="submenu">
         <li>
           <a href="/apps/wordpath/about.html">
-            <img src="/apps/wordpath/WordPath_logo.png" class="app-icon" alt="WordPath logo">
+            <img src="/apps/wordpath/WordPath_logo.png" class="app-icon">
             WordPath
           </a>
         </li>
         <li>
           <a href="/apps/sonicbloom/about.html">
-            <img src="/apps/sonicbloom/SonicBloom_Logo.png" class="app-icon" alt="SonicBloom logo">
+            <img src="/apps/sonicbloom/SonicBloom_Logo.png" class="app-icon">
             SonicBloom
           </a>
         </li>
       </ul>
     </li>
 
-    <!-- LEGAL -->
     <li class="has-submenu">
       <span class="submenu-label">Legal</span>
       <ul class="submenu">
@@ -132,6 +119,5 @@
         <li><a href="/legal/terms.html">Terms</a></li>
       </ul>
     </li>
-
   </ul>
 </nav>
