@@ -41,7 +41,17 @@
       color: white;
       text-decoration: none;
       padding: 0.5rem 0;
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* App icons */
+    .app-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      object-fit: cover;
     }
 
     .submenu {
@@ -54,6 +64,9 @@
       border-radius: 6px;
       min-width: 160px;
       z-index: 1000;
+      text-align: left;
+      list-style: none;
+      padding: 0;
     }
 
     .submenu li a {
@@ -95,11 +108,12 @@
         position: static;
         border: none;
         padding-left: 1rem;
+        text-align: left;
       }
 
       .has-submenu > a::after {
         content: " ▾";
-        float: right;
+        margin-left: auto;
       }
     }
   </style>
@@ -123,8 +137,18 @@
       <li class="has-submenu">
         <a href="#">Apps</a>
         <ul class="submenu">
-          <li><a href="/apps/wordpath/about.html">WordPath</a></li>
-          <li><a href="/apps/sonicbloom/about.html">SonicBloom</a></li>
+          <li>
+            <a href="/apps/wordpath/about.html">
+              <img src="WordPath_logo.png" class="app-icon" alt="WordPath logo">
+              WordPath
+            </a>
+          </li>
+          <li>
+            <a href="/apps/sonicbloom/about.html">
+              <img src="SonicBloom_Logo.png" class="app-icon" alt="SonicBloom logo">
+              SonicBloom
+            </a>
+          </li>
         </ul>
       </li>
     </ul>
