@@ -58,8 +58,39 @@
     fetch("/components/nav.html")
       .then(r => r.text())
       .then(html => {
-        document.getElementById("nav-placeholder").innerHTML = html
-      })
+        document.getElementById("nav-placeholder").innerHTML = html;
+
+        // Initialize mobile submenu toggling
+        const nav = document.querySelector('.bonsai-nav');
+        if (nav) {
+          nav.addEventListener('click', function(e) {
+            // Allow submenu links to navigate normally
+            if (e.target.closest('.submenu')) return;
+
+            const li = e.target.closest('.has-submenu');
+            if (!li) return;
+
+            e.preventDefault();
+
+            // Close other open submenus
+            nav.querySelectorAll('.has-submenu.open').forEach(item => {
+              if (item !== li) item.classList.remove('open');
+            });
+
+            // Toggle current submenu
+            li.classList.toggle('open');
+          });
+
+          // Close submenus when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!e.target.closest('.bonsai-nav')) {
+              nav.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+              });
+            }
+          });
+        }
+      });
   </script>
 
   <header>

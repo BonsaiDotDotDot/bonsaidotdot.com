@@ -23,6 +23,28 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById("nav-placeholder").innerHTML = data;
+
+        // Initialize mobile submenu toggling
+        const nav = document.querySelector('.bonsai-nav');
+        if (nav) {
+          nav.addEventListener('click', function(e) {
+            if (e.target.closest('.submenu')) return;
+            const li = e.target.closest('.has-submenu');
+            if (!li) return;
+            e.preventDefault();
+            nav.querySelectorAll('.has-submenu.open').forEach(item => {
+              if (item !== li) item.classList.remove('open');
+            });
+            li.classList.toggle('open');
+          });
+          document.addEventListener('click', function(e) {
+            if (!e.target.closest('.bonsai-nav')) {
+              nav.querySelectorAll('.has-submenu.open').forEach(item => {
+                item.classList.remove('open');
+              });
+            }
+          });
+        }
       });
   </script>
   <header><h1>Terms of Service</h1></header>
