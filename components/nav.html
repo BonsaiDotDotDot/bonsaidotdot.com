@@ -1,24 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bonsai Navigation</title>
-
+<nav>
   <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #f4f7f5;
-    }
-
     nav {
       background-color: #0a0a23;
       color: white;
       position: relative;
+      font-family: sans-serif;
     }
 
-    /* Hamburger (mobile only) */
     .menu-toggle {
       display: none;
       font-size: 1.8rem;
@@ -27,7 +15,6 @@
       color: white;
     }
 
-    /* Main menu */
     .menu-list {
       display: flex;
       gap: 2rem;
@@ -49,7 +36,6 @@
       gap: 8px;
     }
 
-    /* App icons */
     .app-icon {
       width: 20px;
       height: 20px;
@@ -59,7 +45,6 @@
       display: inline-block;
     }
 
-    /* Submenu */
     .submenu {
       display: none;
       position: absolute;
@@ -83,7 +68,6 @@
       gap: 8px;
     }
 
-    /* Desktop hover */
     .menu-list li:hover .submenu {
       display: block;
     }
@@ -92,7 +76,6 @@
       background-color: #1a1a3a;
     }
 
-    /* Mobile styles */
     @media (max-width: 700px) {
       .menu-toggle {
         display: block;
@@ -109,12 +92,10 @@
         border-top: 1px solid #333;
       }
 
-      /* Disable hover on mobile */
       .menu-list li:hover .submenu {
         display: none;
       }
 
-      /* Mobile submenu open state */
       .has-submenu.open .submenu {
         display: block;
         position: static;
@@ -128,54 +109,52 @@
       }
     }
   </style>
-</head>
 
-<body>
+  <div class="menu-toggle" id="menu-toggle">☰</div>
 
-  <nav>
-    <div class="menu-toggle" id="menu-toggle">☰</div>
+  <ul class="menu-list" id="menu-list">
+    <li><a href="/">Home</a></li>
 
-    <ul class="menu-list" id="menu-list">
-      <li><a href="/">Home</a></li>
+    <li class="has-submenu">
+      <a href="#">Legal</a>
+      <ul class="submenu">
+        <li><a href="/legal/support.html">Support</a></li>
+        <li><a href="/legal/privacy.html">Privacy</a></li>
+        <li><a href="/legal/terms.html">Terms</a></li>
+      </ul>
+    </li>
 
-      <li class="has-submenu">
-        <a href="#">Legal</a>
-        <ul class="submenu">
-          <li><a href="/legal/support.html">Support</a></li>
-          <li><a href="/legal/privacy.html">Privacy</a></li>
-          <li><a href="/legal/terms.html">Terms</a></li>
-        </ul>
-      </li>
-
-      <li class="has-submenu">
-        <a href="#">Apps</a>
-        <ul class="submenu">
-          <li>
-            <a href="/apps/wordpath/about.html">
-              <img src="WordPath_logo.png" class="app-icon" alt="WordPath logo">
-              WordPath
-            </a>
-          </li>
-          <li>
-            <a href="/apps/sonicbloom/about.html">
-              <img src="SonicBloom_Logo.png" class="app-icon" alt="SonicBloom logo">
-              SonicBloom
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+    <li class="has-submenu">
+      <a href="#">Apps</a>
+      <ul class="submenu">
+        <li>
+          <a href="/apps/wordpath/about.html">
+            <img src="/apps/wordpath/WordPath_logo.png" class="app-icon">
+            WordPath
+          </a>
+        </li>
+        <li>
+          <a href="/apps/sonicbloom/SonicBloom_Logo.png">
+            <img src="/apps/sonicbloom/SonicBloom_Logo.png" class="app-icon">
+            SonicBloom
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 
   <script>
-    const toggle = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu-list");
+    // This script runs AFTER nav.html is injected into the page
+    const navRoot = document.currentScript.parentElement;
+
+    const toggle = navRoot.querySelector("#menu-toggle");
+    const menu = navRoot.querySelector("#menu-list");
 
     toggle.onclick = () => {
       menu.style.display = menu.style.display === "flex" ? "none" : "flex";
     };
 
-    document.querySelectorAll(".has-submenu > a").forEach(link => {
+    navRoot.querySelectorAll(".has-submenu > a").forEach(link => {
       link.addEventListener("click", e => {
         if (window.innerWidth < 700) {
           e.preventDefault();
@@ -184,6 +163,4 @@
       });
     });
   </script>
-
-</body>
-</html>
+</nav>
