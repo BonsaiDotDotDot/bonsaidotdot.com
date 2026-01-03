@@ -19,6 +19,7 @@ Live at **[bonsaidotdot.com](https://bonsaidotdot.com)**
 - [Browser Support](#browser-support)
 - [Live Pages](#live-pages)
 - [Contributing](#contributing)
+- [Changelog](#changelog)
 - [Contact](#contact)
 - [License](#license)
 
@@ -62,11 +63,15 @@ No frameworks, no build process—just clean, simple web fundamentals.
 ```
 bonsaidotdot.com/
 ├── index.html                      # Homepage
+├── README.md                       # This file
+├── CHANGELOG.md                    # Version history and changes
+├── LICENSE                         # MIT License
+├── .nojekyll                       # Disables Jekyll processing
+├── CNAME                           # Custom domain configuration
 ├── favicon.ico                     # Site favicon
 ├── favicon.png                     # High-res favicon for mobile
 ├── logo.png                        # Bonsai logo
 ├── app-ads.txt                     # Google AdMob configuration
-├── CNAME                           # Custom domain for GitHub Pages
 ├── footer.html                     # Shared footer component (deprecated)
 │
 ├── components/
@@ -198,6 +203,16 @@ Contributions are welcome! To contribute:
 - Test on both desktop and mobile devices
 - Ensure all pages load the nav component using the same pattern
 - Follow the existing CSS naming conventions
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a detailed history of changes, releases, and version updates.
+
+**Latest Version:** 1.0.0 (2026-01-03)
+- Comprehensive documentation
+- Mobile-responsive navigation
+- App showcase pages
+- Legal documentation
 
 ## Contact
 
