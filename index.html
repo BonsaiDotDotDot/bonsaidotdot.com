@@ -4,28 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Primary Meta Tags -->
   <title>Bonsai … — Pause. Reflect. Continue…</title>
-  <meta name="title" content="Bonsai … — Pause. Reflect. Continue…">
-  <meta name="description" content="Bonsai … is a puzzle and brand experience. Pause. Reflect. Continue… with WordPath and more.">
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bonsaidotdot.com/">
-  <meta property="og:title" content="Bonsai … — Pause. Reflect. Continue…">
-  <meta property="og:description" content="Puzzle, play, and reflection. Explore WordPath and Bonsai …">
-  <meta property="og:image" content="https://bonsaidotdot.com/logo.png">
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://bonsaidotdot.com/">
-  <meta property="twitter:title" content="Bonsai … — Pause. Reflect. Continue…">
-  <meta property="twitter:description" content="Puzzle, play, and reflection. Explore WordPath and Bonsai …">
-  <meta property="twitter:image" content="https://bonsaidotdot.com/logo.png">
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="favicon.png">
 
   <style>
     body {
@@ -36,6 +15,20 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+    }
+
+    /* HOMEPAGE NAV ONLY — DOES NOT TOUCH .bonsai-nav */
+    body > nav {
+      background: #2c3e50;
+      padding: 0.8em;
+      text-align: center;
+    }
+
+    body > nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 1em;
+      font-weight: 500;
     }
 
     header {
@@ -53,25 +46,11 @@
       margin-bottom: 20px;
     }
 
-    h1 {
-      font-size: 2.5em;
-      margin: 10px 0;
-      color: #2f6d2f;
-      letter-spacing: 1px;
-    }
-
     p.tagline {
       font-size: 1.3em;
       font-style: italic;
       color: #555;
       margin: 3em 0 1em;
-      animation: throb 5s infinite;
-    }
-
-    @keyframes throb {
-      0%   { opacity: 1; transform: scale(1); }
-      50%  { opacity: 0.6; transform: scale(1.3); }
-      100% { opacity: 1; transform: scale(1); }
     }
 
     footer {
@@ -81,29 +60,14 @@
       background: #f9f9f9;
       text-align: center;
     }
-
-    a {
-      color: #2f6d2f;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      p.tagline { font-size: 1.1em; }
-      img.logo { max-width: 180px; }
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- Navigation bar -->
+  <!-- Bonsai Nav -->
   <div id="nav-placeholder"></div>
 
-  <!-- Load nav.html -->
   <script>
     fetch("/components/nav.html")
       .then(r => r.text())
@@ -112,36 +76,25 @@
       })
   </script>
 
-  <!-- CLICK HANDLER (corrected) -->
+  <!-- CLICK HANDLER (isolated + correct) -->
   <script>
     document.getElementById("nav-placeholder").addEventListener("click", e => {
 
-      // 1. If click is inside a submenu, allow navigation
-      if (e.target.closest(".submenu")) {
-        return
-      }
+      // Allow submenu links to navigate
+      if (e.target.closest(".submenu")) return
 
-      // 2. Find the parent <li class="has-submenu">
       const li = e.target.closest(".has-submenu")
       if (!li) return
 
-      // 3. Toggle submenu
       e.preventDefault()
       li.classList.toggle("open")
     })
   </script>
 
   <header>
-    <img src="logo.png" alt="Bonsai Logo" class="logo" style="max-width:40%; height:auto;">
+    <img src="logo.png" class="logo">
     <p class="tagline">Pause. Reflect. Continue…</p>
   </header>
-
-  <!-- Ko-fi Floating Widget -->
-  <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
-  <script>
-    kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'bonsaidotdotdot');
-    kofiwidget2.draw();
-  </script>
 
   <footer>
     <p>Contact: <a href="mailto:bonsai@bonsaidotdot.com">bonsai@bonsaidotdot.com</a></p>
