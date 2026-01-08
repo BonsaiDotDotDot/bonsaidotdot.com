@@ -42,8 +42,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Tutti Fruttini Combinasion app showcase page
+- Tutti Fruttini navigation link in Apps dropdown
+- Additional SonicBloom screenshots (BoardSelect, EditImage, EditSound, SoundBoard)
+- Updated all legal pages to reference Tutti Fruttini
+
+### Changed
+- Enhanced SonicBloom about page with new screenshots
+- Updated README to include Tutti Fruttini in app list and live pages
+
 ### Planned
-- Additional app showcases as new apps are released
 - Blog or updates section (optional)
 - Enhanced accessibility features (ARIA labels, keyboard navigation)
 - Performance optimizations (lazy loading, image optimization)

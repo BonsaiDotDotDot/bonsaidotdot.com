@@ -29,6 +29,7 @@ Bonsai … is a portfolio website highlighting mobile applications developed wit
 
 - **WordPath** - A word ladder puzzle game designed to challenge your mind
 - **SonicBloom** - A beautifully crafted soundboard app for creative audio expression
+- **Tutti Fruttini Combinasion** - A physics-based fruit-merging puzzle game with Italian BrainRot charm
 
 The website serves as a central hub for app information, support resources, and legal documentation.
 
@@ -86,9 +87,21 @@ bonsaidotdot.com/
 │   │   ├── WordPath_MainScreen_0.jpg
 │   │   └── GetItOnGooglePlay_Badge_Web_color_English.png
 │   │
-│   └── sonicbloom/
-│       ├── about.html              # SonicBloom app page
-│       ├── SonicBloom_Logo.png     # App logo
+│   ├── sonicbloom/
+│   │   ├── about.html              # SonicBloom app page
+│   │   ├── SonicBloom_Logo.png     # App logo
+│   │   ├── SonicBloom_BoardSelect.jpg
+│   │   ├── SonicBloom_EditImage.jpg
+│   │   ├── SonicBloom_EditSound.jpg
+│   │   ├── SonicBloom_SoundBoard.jpg
+│   │   └── GetItOnGooglePlay_Badge_Web_color_English.png
+│   │
+│   └── tuttifruttini/
+│       ├── about.html              # Tutti Fruttini app page
+│       ├── TuttiFruttini_Logo.png  # App logo
+│       ├── TuttiFruttini_Screenshot_1.jpg
+│       ├── TuttiFruttini_Screenshot_2.jpg
+│       ├── TuttiFruttini_Screenshot_3.jpg
 │       └── GetItOnGooglePlay_Badge_Web_color_English.png
 │
 └── legal/
@@ -181,6 +194,7 @@ No build process needed—just push to `main` and changes go live automatically.
 - 🏠 [Home](https://bonsaidotdot.com/)
 - 🎮 [WordPath](https://bonsaidotdot.com/apps/wordpath/about.html)
 - 🎵 [SonicBloom](https://bonsaidotdot.com/apps/sonicbloom/about.html)
+- 🍓 [Tutti Fruttini Combinasion](https://bonsaidotdot.com/apps/tuttifruttini/about.html)
 - 📧 [Support](https://bonsaidotdot.com/legal/support.html)
 - 🔒 [Privacy Policy](https://bonsaidotdot.com/legal/privacy.html)
 - 📜 [Terms of Service](https://bonsaidotdot.com/legal/terms.html)

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Italian BrainRot Tutti Fruttini Combinasion</title>
+  <style>
+    body { font-family:"Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin:0; background:#f9fafb; color:#333; }
+    header { text-align:center; padding:2em; }
+    main { max-width:900px; margin:2em auto; padding:2em; background:#fff; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    main h2 { color:#2c3e50; margin-top:1.5em; }
+    .screenshots { display:flex; gap:1em; flex-wrap:wrap; margin-top:1em; justify-content:center; }
+    .screenshots img { max-width:280px; border-radius:6px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+    .download { margin-top:2em; text-align:center; }
+    .download a img { height:60px; }
+    footer { text-align:center; margin:3em 0 1em; font-size:0.95em; color:#666; animation:throb 2s infinite; }
+    @keyframes throb { 0%{opacity:1;transform:scale(1);} 50%{opacity:0.6;transform:scale(1.05);} 100%{opacity:1;transform:scale(1);} }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<script>
+  fetch("/components/nav.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("nav-placeholder").innerHTML = data;
+
+      // Initialize mobile submenu toggling
+      const nav = document.querySelector('.bonsai-nav');
+      if (nav) {
+        nav.addEventListener('click', function(e) {
+          if (e.target.closest('.submenu')) return;
+          const li = e.target.closest('.has-submenu');
+          if (!li) return;
+          e.preventDefault();
+          nav.querySelectorAll('.has-submenu.open').forEach(item => {
+            if (item !== li) item.classList.remove('open');
+          });
+          const isOpening = !li.classList.contains('open');
+          li.classList.toggle('open');
+          if (isOpening && window.innerWidth <= 700) {
+            const submenu = li.querySelector('.submenu');
+            if (submenu) {
+              const rect = li.getBoundingClientRect();
+              submenu.style.top = rect.bottom + 'px';
+              submenu.style.left = rect.left + 'px';
+            }
+          }
+        });
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.bonsai-nav')) {
+            nav.querySelectorAll('.has-submenu.open').forEach(item => {
+              item.classList.remove('open');
+            });
+          }
+        });
+      }
+    });
+</script>
+
+
+  <header>
+    <h1> <img src="TuttiFruttini_Logo.png" alt="TuttiFruttini logo" style="max-width:40%; height:auto;"></h1>
+
+    <p><em>Fruits whirl, minds twirl, sweet chaos unfurls.</em></p>
+  </header>
+
+  <main>
+    <h2>Embrace the Chaos</h2>
+    <p>
+      <strong>Italian BrainRot Tutti Fruttini Combinasion</strong> is a physics‑based fruit‑merging puzzle game where players drop fruits into a container; identical fruits merge into larger ones. The goal is to reach the highest fruit tier without overflowing the playfield.
+    </p>
+
+    <h2>Features</h2>
+    <ul>
+      <li>Real‑time 2D physics puzzle  with soft, bouncy interactions</li>
+	  <li>A casual merge‑on‑collision fruit merging game</li>
+	  <li>Randomized fruit generation with preview</li>
+	  <li>Game‑over detection via top boundary</li>
+	  <li>Shake mechanic with limited uses (50 max)</li>
+	  <li>Rewarded ad to refill shake counter</li>
+    </ul>
+
+    <h2>Screenshots</h2>
+    <div class="screenshots">
+      <img src="TuttiFruttini_Screenshot_1.jpg" alt="Tutti Fruttini tutorial">
+      <img src="TuttiFruttini_Screenshot_2.jpg" alt="Tutti Fruttini gameplay screenshot with Strawberry Elephant">
+      <img src="TuttiFruttini_Screenshot_3.jpg" alt="Tutti Fruttini gameplay screenshot having used some shakes at the start of a game">
+    </div>
+
+    <div class="download">
+      <a href="https://play.google.com/store/apps/details?id=com.bonsaidotdot.tuttifruttini">
+        <img src="GetItOnGooglePlay_Badge_Web_color_English.png" alt="Get it on Google Play">
+      </a>
+    </div>
+
+    <h2>Support</h2>
+    <p>
+      Need help? Contact us at
+      <a href="mailto:support@bonsaidotdot.com">support@bonsaidotdot.com</a>.
+    </p>
+  </main>
+
+  <!-- Ko-fi Floating Widget -->
+  <script src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
+  <script>
+    kofiwidget2.init('Support Me on Ko-fi', '#29abe0', 'bonsaidotdotdot');
+    kofiwidget2.draw();
+  </script>
+
+  <footer>
+    Pause. Reflect. Continue…
+  </footer>
+
+</body>
+</html>
