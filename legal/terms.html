@@ -15,43 +15,13 @@
   </style>
 </head>
 <body>
-  <div id="nav-placeholder"></div>
+  <div id="nav-placeholder"></div>  <script src="/components/nav-init.js"></script>
   <script>
     fetch("/components/nav.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("nav-placeholder").innerHTML = data;
-
-        // Initialize mobile submenu toggling
-        const nav = document.querySelector('.bonsai-nav');
-        if (nav) {
-          nav.addEventListener('click', function(e) {
-            if (e.target.closest('.submenu')) return;
-            const li = e.target.closest('.has-submenu');
-            if (!li) return;
-            e.preventDefault();
-            nav.querySelectorAll('.has-submenu.open').forEach(item => {
-              if (item !== li) item.classList.remove('open');
-            });
-            const isOpening = !li.classList.contains('open');
-            li.classList.toggle('open');
-            if (isOpening && window.innerWidth <= 700) {
-              const submenu = li.querySelector('.submenu');
-              if (submenu) {
-                const rect = li.getBoundingClientRect();
-                submenu.style.top = rect.bottom + 'px';
-                submenu.style.left = rect.left + 'px';
-              }
-            }
-          });
-          document.addEventListener('click', function(e) {
-            if (!e.target.closest('.bonsai-nav')) {
-              nav.querySelectorAll('.has-submenu.open').forEach(item => {
-                item.classList.remove('open');
-              });
-            }
-          });
-        }
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        document.getElementById("nav-placeholder").innerHTML = html;
+        initBonsaiNav();
       });
   </script>
   <header><h1>Terms of Service</h1></header>
