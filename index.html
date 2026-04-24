@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <title>Bonsai … — Pause. Reflect. Continue…</title>
 
   <style>
@@ -88,60 +89,18 @@
 <body>
 
   <!-- Bonsai Nav -->
-  <div id="nav-placeholder"></div>
-
+  <div id="nav-placeholder"></div>  <script src="/components/nav-init.js"></script>
   <script>
     fetch("/components/nav.html")
-      .then(r => r.text())
-      .then(html => {
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
         document.getElementById("nav-placeholder").innerHTML = html;
-
-        // Initialize mobile submenu toggling
-        const nav = document.querySelector('.bonsai-nav');
-        if (nav) {
-          nav.addEventListener('click', function(e) {
-            // Allow submenu links to navigate normally
-            if (e.target.closest('.submenu')) return;
-
-            const li = e.target.closest('.has-submenu');
-            if (!li) return;
-
-            e.preventDefault();
-
-            // Close other open submenus
-            nav.querySelectorAll('.has-submenu.open').forEach(item => {
-              if (item !== li) item.classList.remove('open');
-            });
-
-            // Toggle current submenu
-            const isOpening = !li.classList.contains('open');
-            li.classList.toggle('open');
-
-            // Position submenu on mobile (fixed positioning)
-            if (isOpening && window.innerWidth <= 700) {
-              const submenu = li.querySelector('.submenu');
-              if (submenu) {
-                const rect = li.getBoundingClientRect();
-                submenu.style.top = rect.bottom + 'px';
-                submenu.style.left = rect.left + 'px';
-              }
-            }
-          });
-
-          // Close submenus when clicking outside
-          document.addEventListener('click', function(e) {
-            if (!e.target.closest('.bonsai-nav')) {
-              nav.querySelectorAll('.has-submenu.open').forEach(item => {
-                item.classList.remove('open');
-              });
-            }
-          });
-        }
+        initBonsaiNav();
       });
   </script>
 
   <header>
-    <img src="logo.png" class="logo">
+    <img src="logo.png" class="logo" alt="Bonsai logo">
     <p class="tagline">Pause. Reflect. Continue…</p>
 
     <div class="app-logos-section">
