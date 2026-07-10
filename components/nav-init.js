@@ -1,3 +1,9 @@
+// Every page on this site fetches nav.html/footer.html and assigns the
+// response to innerHTML. This is safe only because those fragments are
+// static, same-origin, developer-authored files — never user- or
+// query-string-influenced. If any fragment ever becomes dynamic, switch
+// that call to textContent or sanitize first.
+
 function initBonsaiNav() {
   const nav = document.querySelector('.bonsai-nav');
   if (!nav) return;
